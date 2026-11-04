@@ -36,18 +36,17 @@
 
     </div>
 
-    <script>
-        // Array com os nomes dos arquivos das fotos (ajuste a extensão se forem .png, .jpeg, etc.)
+<script>
         const totalFotos = 11;
         const containerGaleria = document.getElementById('galeria');
 
         for (let i = 1; i <= totalFotos; i++) {
-            // Cria a estrutura HTML para cada foto de forma dinâmica
             const div = document.createElement('div');
             div.className = "rounded-lg overflow-hidden shadow-lg bg-gray-900";
             
+            // Alterado para .jpeg (atente-se se a extensão no GitHub está em minúsculo ou maiúsculo)
             div.innerHTML = `
-                <img src="fotos/${i}.jpg" alt="Foto ${i}" class="w-full h-72 object-cover" loading="lazy">
+                <img src="fotos/${i}.jpeg" alt="Foto ${i}" class="w-full h-72 object-cover" loading="lazy">
                 <div class="p-3 text-xs text-gray-400 text-center">Foto ${i} de ${totalFotos}</div>
             `;
             
