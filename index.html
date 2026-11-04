@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aluguel de Imóvel</title>
-    <!-- Tailwind CSS via CDN para estilizar rápido -->
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans antialiased">
@@ -17,24 +17,16 @@
             <p class="text-sm text-gray-400 mt-1">Localização Privilegiada • Ótimo Estado</p>
         </div>
 
-        <!-- Galeria de Fotos Simples -->
-        <div class="p-4 space-y-4 overflow-y-auto">
-            <div class="rounded-lg overflow-hidden shadow-lg bg-gray-900">
-                <img src="fotos/sala.jpg" alt="Sala" class="w-full h-64 object-cover">
-                <div class="p-3 text-xs text-gray-400">Sala de Estar</div>
-            </div>
-            <div class="rounded-lg overflow-hidden shadow-lg bg-gray-900">
-                <img src="fotos/quarto.jpg" alt="Quarto" class="w-full h-64 object-cover">
-                <div class="p-3 text-xs text-gray-400">Quarto Principal</div>
-            </div>
-            <!-- Adicione mais fotos se precisar -->
+        <!-- Galeria Dinâmica de Fotos (Gerada via JS) -->
+        <div id="galeria" class="p-4 space-y-4 overflow-y-auto">
+            <!-- As fotos serão injetadas aqui pelo script abaixo -->
         </div>
 
         <!-- Rodapé / Contato Seguro -->
         <div class="p-6 bg-gray-900 border-t border-gray-700 text-center">
             <p class="text-sm text-gray-300 mb-4">Interessado? Entre em contato para agendar visita.</p>
             
-            <!-- Link do WhatsApp com mensagem pré-pronta (evita curiosos sem compromisso) -->
+            <!-- Link do WhatsApp -->
             <a href="https://wa.me/55SEUDDDSEUNUMERO?text=Olá,%20vi%20o%20QR%20Code%20do%20imóvel%20e%20tenho%20interesse." 
                target="_blank"
                class="block w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition duration-200 shadow-lg">
@@ -43,6 +35,25 @@
         </div>
 
     </div>
+
+    <script>
+        // Array com os nomes dos arquivos das fotos (ajuste a extensão se forem .png, .jpeg, etc.)
+        const totalFotos = 11;
+        const containerGaleria = document.getElementById('galeria');
+
+        for (let i = 1; i <= totalFotos; i++) {
+            // Cria a estrutura HTML para cada foto de forma dinâmica
+            const div = document.createElement('div');
+            div.className = "rounded-lg overflow-hidden shadow-lg bg-gray-900";
+            
+            div.innerHTML = `
+                <img src="fotos/${i}.jpg" alt="Foto ${i}" class="w-full h-72 object-cover" loading="lazy">
+                <div class="p-3 text-xs text-gray-400 text-center">Foto ${i} de ${totalFotos}</div>
+            `;
+            
+            containerGaleria.appendChild(div);
+        }
+    </script>
 
 </body>
 </html>
