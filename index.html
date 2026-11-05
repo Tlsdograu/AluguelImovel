@@ -13,13 +13,42 @@
         
         <!-- Cabeçalho -->
         <div class="p-6 text-center border-b border-gray-700">
-            <h1 class="text-2xl font-bold">Imóvel Mobiliado Disponível para aluguel</h1>
-            <p class="text-sm text-gray-400 mt-1">Interessado contacte o whatsapp ao final da página</p>
+            <h1 class="text-2xl font-bold">Imóvel Mobiliado Disponível para Aluguel</h1>
+            <p class="text-sm text-gray-400 mt-1">Setor Coimbra, Goiânia - GO</p>
         </div>
 
-        <!-- Galeria Dinâmica de Fotos (Gerada via JS) -->
-        <div id="galeria" class="p-4 space-y-4 overflow-y-auto">
-            <!-- As fotos serão injetadas aqui pelo script abaixo -->
+        <!-- Conteúdo Principal (Informações + Galeria) -->
+        <div class="p-4 space-y-4 overflow-y-auto">
+            
+            <!-- CAIXA DE TEXTO / LOCALIZAÇÃO E DETALHES -->
+            <div class="bg-gray-700/50 border border-gray-600/50 rounded-xl p-4 text-sm text-gray-300 shadow-md">
+                <h2 class="font-bold text-base text-white mb-2 flex items-center gap-2">
+                    📍 Localização e Região
+                </h2>
+                
+                <!-- Resumo visível inicialmente -->
+                <div id="texto-resumido" class="space-y-2 leading-relaxed">
+                    <p>Imóvel localizado em uma região estratégica de Goiânia, com fácil acesso a importantes bairros da capital, como Setor Bueno, Setor Oeste, Campinas, Jardim América e Centro.</p>
+                </div>
+
+                <!-- Texto completo (expansível) -->
+                <div id="texto-completo" class="hidden space-y-2 leading-relaxed mt-2 pt-2 border-t border-gray-600">
+                    <p>O Setor Coimbra oferece excelente infraestrutura, com supermercados, farmácias, escolas, hospitais, clínicas, restaurantes e comércio diversificado nas proximidades.</p>
+                    <p>A região também se destaca pela mobilidade, com acesso facilitado às avenidas Castelo Branco, Perimetral e Anhanguera, proporcionando praticidade nos deslocamentos diários.</p>
+                    <p><strong>Um endereço que reúne localização, conveniência e funcionalidade, ideal para quem busca conforto e facilidade no dia a dia!</strong></p>
+                </div>
+
+                <!-- Botão Ver Mais / Ver Menos -->
+                <button onclick="toggleTexto()" id="btn-ler-mais" class="mt-3 text-xs text-blue-400 hover:text-blue-300 font-semibold focus:outline-none">
+                    + Ler descrição completa
+                </button>
+            </div>
+
+            <!-- Galeria Dinâmica de Fotos (Gerada via JS) -->
+            <div id="galeria" class="space-y-4">
+                <!-- As fotos serão injetadas aqui pelo script abaixo -->
+            </div>
+
         </div>
 
         <!-- Rodapé / Contato Seguro -->
@@ -36,7 +65,22 @@
 
     </div>
 
-<script>
+    <script>
+        // Função para expandir/recolher o texto longo
+        function toggleTexto() {
+            const textoCompleto = document.getElementById('texto-completo');
+            const btn = document.getElementById('btn-ler-mais');
+            
+            if (textoCompleto.classList.contains('hidden')) {
+                textoCompleto.classList.remove('hidden');
+                btn.innerText = '- Ocultar descrição';
+            } else {
+                textoCompleto.classList.add('hidden');
+                btn.innerText = '+ Ler descrição completa';
+            }
+        }
+
+        // Geração automática das 11 fotos
         const totalFotos = 11;
         const containerGaleria = document.getElementById('galeria');
 
@@ -44,7 +88,6 @@
             const div = document.createElement('div');
             div.className = "rounded-lg overflow-hidden shadow-lg bg-gray-900";
             
-            // Alterado para .jpeg (atente-se se a extensão no GitHub está em minúsculo ou maiúsculo)
             div.innerHTML = `
                 <img src="fotos/${i}.jpeg" alt="Foto ${i}" class="w-full h-72 object-cover" loading="lazy">
                 <div class="p-3 text-xs text-gray-400 text-center">Foto ${i} de ${totalFotos}</div>
