@@ -15,32 +15,51 @@
         <div class="p-6 text-center border-b border-gray-700">
             <h1 class="text-2xl font-bold">Imóvel Mobiliado Disponível para Aluguel</h1>
             <p class="text-sm text-gray-400 mt-1">Setor Coimbra, Goiânia - GO</p>
+            <div class="mt-4 bg-green-600/20 border border-green-500/40 text-green-300 rounded-lg py-2 px-3 text-lg font-bold">
+                R$ 2.400,00 <span class="text-xs font-normal text-gray-300">/ mês</span>
+            </div>
         </div>
 
         <!-- Conteúdo Principal (Informações + Galeria) -->
         <div class="p-4 space-y-4 overflow-y-auto">
             
-            <!-- CAIXA DE TEXTO / LOCALIZAÇÃO E DETALHES -->
+            <!-- CAIXA DE DETALHES DO IMÓVEL -->
             <div class="bg-gray-700/50 border border-gray-600/50 rounded-xl p-4 text-sm text-gray-300 shadow-md">
                 <h2 class="font-bold text-base text-white mb-2 flex items-center gap-2">
-                    📍 Localização e Região
+                    📍 Endereço e Detalhes
                 </h2>
                 
-                <!-- Resumo visível inicialmente -->
+                <!-- Resumo visível inicialmente (Endereço e Preço de Destaque) -->
                 <div id="texto-resumido" class="space-y-2 leading-relaxed">
-                    <p>Imóvel localizado em uma região estratégica de Goiânia, com fácil acesso a importantes bairros da capital, como Setor Bueno, Setor Oeste, Campinas, Jardim América e Centro.</p>
+                    <p><strong>Localização:</strong> Rua 261, Número 264 - Setor Coimbra</p>
+                    <p class="text-gray-400 text-xs">Toque abaixo para ver os cômodos, mobília completa e mais informações.</p>
                 </div>
 
-                <!-- Texto completo (expansível) -->
-                <div id="texto-completo" class="hidden space-y-2 leading-relaxed mt-2 pt-2 border-t border-gray-600">
-                    <p>O Setor Coimbra oferece excelente infraestrutura, com supermercados, farmácias, escolas, hospitais, clínicas, restaurantes e comércio diversificado nas proximidades.</p>
-                    <p>A região também se destaca pela mobilidade, com acesso facilitado às avenidas Castelo Branco, Perimetral e Anhanguera, proporcionando praticidade nos deslocamentos diários.</p>
-                    <p><strong>Um endereço que reúne localização, conveniência e funcionalidade, ideal para quem busca conforto e facilidade no dia a dia!</strong></p>
+                <!-- Texto completo / Detalhes (expansível) -->
+                <div id="texto-completo" class="hidden space-y-3 leading-relaxed mt-3 pt-3 border-t border-gray-600">
+                    <div>
+                        <strong class="text-white">🚪 Cômodos:</strong>
+                        <ul class="list-disc list-inside mt-1 space-y-0.5 text-gray-300">
+                            <li>Dois quartos</li>
+                            <li>Banheiro</li>
+                            <li>Cozinha</li>
+                            <li>Sala</li>
+                            <li>Área de serviço</li>
+                            <li>Área gourmet (churrasqueira pré-moldada)</li>
+                            <li>Quintal</li>
+                            <li>Garagem</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <strong class="text-white">🛋️ Mobília inclusa:</strong>
+                        <p class="mt-1 text-gray-300">Cama de casal, cama de solteiro, guarda-roupa, cômoda, mesa 6 lugares, geladeira, fogão com botijão, forno, forno micro-ondas, um sofá 3 lugares, aparador, máquina de lavar, tanquinho, mesa no quintal 4 lugares e 2 cadeiras de descanso.</p>
+                    </div>
                 </div>
 
                 <!-- Botão Ver Mais / Ver Menos -->
                 <button onclick="toggleTexto()" id="btn-ler-mais" class="mt-3 text-xs text-blue-400 hover:text-blue-300 font-semibold focus:outline-none">
-                    + Ler descrição completa
+                    + Ver cômodos e mobília completa
                 </button>
             </div>
 
@@ -73,10 +92,10 @@
             
             if (textoCompleto.classList.contains('hidden')) {
                 textoCompleto.classList.remove('hidden');
-                btn.innerText = '- Ocultar descrição';
+                btn.innerText = '- Ocultar detalhes';
             } else {
                 textoCompleto.classList.add('hidden');
-                btn.innerText = '+ Ler descrição completa';
+                btn.innerText = '+ Ver cômodos e mobília completa';
             }
         }
 
